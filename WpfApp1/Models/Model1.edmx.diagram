@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="BookingdbModel.Servicii" Width="1.5" PointX="3" PointY="4.375" />
         <AssociationConnector Association="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64" />
         <AssociationConnector Association="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" />
+        <EntityTypeShape EntityType="BookingdbModel.OFERTE" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
