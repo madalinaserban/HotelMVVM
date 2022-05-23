@@ -15,7 +15,6 @@ namespace WpfApp1.ViewModels
     class InformatiiCameraViewModel
     {
         Bookingdb booking = new Bookingdb();
-        // DisplayProduct selectedProduct = MenuViewModel.choosedProduct;
         public int Numar_Dormitoare
         {
             get
@@ -23,33 +22,6 @@ namespace WpfApp1.ViewModels
                 return AdministratorMenuViewModel.choosedRoom.Tip_Camera;
             }
         }
-
-        //private bool productType = false;
-        //public string Category
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            var productQuery = (from category in restaurant.Categories
-        //                                join product in restaurant.Products
-        //                                on selectedProduct.Name equals product.Name
-        //                                where category.Category_ID.Equals(product.Category_ID)
-        //                                select category.Name).First();
-        //            productType = true;
-        //            return productQuery.ToString();
-        //        }
-        //        catch
-        //        {
-        //            var menuQuery = (from category in restaurant.Categories
-        //                             join menu in restaurant.Menus
-        //                             on selectedProduct.Name equals menu.Name
-        //                             where category.Category_ID.Equals(menu.Category_ID)
-        //                             select category.Name).First();
-        //            return menuQuery.ToString();
-        //        }
-        //    }
-        //}
 
         public string Pret
         {
@@ -114,40 +86,12 @@ namespace WpfApp1.ViewModels
                 var query = booking.GetServicii(a);
                 foreach (var servicii in query)
                 {
-                    result = result + servicii.ToString() + " ";
+                    if (servicii != null)
+                    { result = result + servicii.ToString() + " "; }
                 }
                 return result;
             }
         }
-        //public string Dotari
-        //{
-        //    get
-        //    {
-        //        string result = "";
-
-        //        var query = booking.GetAllergensFromProduct(selectedProduct.Name);
-        //        foreach (var allergen in query)
-        //        {
-        //            result = result + allergen.ToString() + " ";
-        //        }
-        //    }
-
-        //        else
-        //        {
-        //        var query = restaurant.GetAllergensFromMenus(selectedProduct.Name);
-        //        foreach (var allergen in query)
-        //        {
-        //            result = result + allergen.ToString() + " ";
-        //        }
-        //    }
-
-        //        if (result == "")
-        //        {
-        //            result = "-";
-        //        }
-
-        //        return result;
-        //}
 
         private ICommand stergeCameraCommand;
         public ICommand StergeCameraCommand
@@ -170,7 +114,6 @@ namespace WpfApp1.ViewModels
                 a = (int)cam;
             }
             LogicCamera camera1 = new LogicCamera();
-            // camera1.DeleteFeature(a);
             booking.DELETEROOM(a);
             MessageBox.Show("Ai sters camera!");
             AdministratorMenuView Window = new AdministratorMenuView();

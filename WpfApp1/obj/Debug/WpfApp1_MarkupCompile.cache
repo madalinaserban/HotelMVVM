@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\App.xaml
-9184112673
+11-1873180225
 21628168987
-352120225697
+39-724648113
 18-1092526320
-MainWindow.xaml;View\AdaugaNouTipDeCamera.xaml;View\AdministratorMenuView.xaml;View\InformatiiCameraView.xaml;View\NotLoggedView.xaml;View\SignInView.xaml;View\SignUpView.xaml;View\StartWindow.xaml;View\WithAccount.xaml;
+MainWindow.xaml;View\AdaugaNouTipDeCamera.xaml;View\AdministratorMenuView.xaml;View\AdministratorUserView.xaml;View\InformatiiCameraView.xaml;View\NotLoggedView.xaml;View\SearchView.xaml;View\SignInView.xaml;View\SignUpView.xaml;View\StartWindow.xaml;View\WithAccount.xaml;
 
-True
+False
 

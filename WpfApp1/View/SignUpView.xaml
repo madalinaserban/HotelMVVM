@@ -40,7 +40,7 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="500"/>
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontFamily" Value="Lucida Calligraphy"/>
+            <Setter Property="FontFamily" Value="Sitka Display"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -78,7 +78,7 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="500"/>
             <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontFamily" Value="Lucida Calligraphy"/>
+            <Setter Property="FontFamily" Value="Sitka Display"/>
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>

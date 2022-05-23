@@ -28,6 +28,7 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="CLIENTIs" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="User" ToRole="CLIENTI" />
+    <Property Name="DELETED" Type="Boolean" />
   </EntityType>
   <EntityContainer Name="Bookingdb" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cameras" EntityType="Self.Camera" />
@@ -59,6 +60,26 @@
     </FunctionImport>
     <FunctionImport Name="SelectServicii" ReturnType="Collection(BookingdbModel.SelectServicii_Result)">
       <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ORDERBYPRICE" ReturnType="Collection(BookingdbModel.ORDERBYPRICE_Result)" />
+    <FunctionImport Name="UPDATEROOM">
+      <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+      <Parameter Name="BALCON" Mode="In" Type="Boolean" />
+      <Parameter Name="ETAJ" Mode="In" Type="Int32" />
+      <Parameter Name="NR_Dormitoare" Mode="In" Type="Int32" />
+      <Parameter Name="PRET" Mode="In" Type="Double" />
+      <Parameter Name="BUCATARIE" Mode="In" Type="Boolean" />
+      <Parameter Name="FRIGIDER" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATESERVICII">
+      <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+      <Parameter Name="SERVICII" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DELETEUSER">
+      <Parameter Name="ID_USER" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetUserIdByMail" ReturnType="Collection(Int32)">
+      <Parameter Name="Mail" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="CLIENTI">
@@ -108,5 +129,16 @@
     <Property Type="Int32" Name="Serivicii_ID" Nullable="false" />
     <Property Type="Int32" Name="CAMERA_ID" Nullable="true" />
     <Property Type="String" Name="ServiciiString" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ORDERBYPRICE_Result">
+    <Property Type="Int32" Name="CAMERA_ID" Nullable="false" />
+    <Property Type="Int32" Name="ETAJ" Nullable="true" />
+    <Property Type="Int32" Name="NR_CAMERA" Nullable="true" />
+    <Property Type="Int32" Name="NR_DORMITOARE" Nullable="true" />
+    <Property Type="Double" Name="PRET" Nullable="true" />
+    <Property Type="Boolean" Name="BALCON" Nullable="true" />
+    <Property Type="Boolean" Name="BUCATARIE" Nullable="true" />
+    <Property Type="Boolean" Name="FRIGIDER" Nullable="true" />
+    <Property Type="Boolean" Name="DELETED" Nullable="true" />
   </ComplexType>
 </Schema>

@@ -71,6 +71,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LogicModel\LogicCamera.cs" />
+    <Compile Include="Models\UserMenu.cs" />
     <Compile Include="Models\LogicModel\UserModel.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -87,6 +88,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ORDERBYPRICE_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoomsMenu.cs" />
     <Compile Include="Models\SelectServicii_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -100,6 +104,7 @@
     <Compile Include="Services\RelayCommand.cs" />
     <Compile Include="ViewModels\AddNewRoomViewModel.cs" />
     <Compile Include="ViewModels\AdministratorMenuViewModel.cs" />
+    <Compile Include="ViewModels\AdministratorUserMenuViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\InformatiiCameraViewModel.cs" />
     <Compile Include="ViewModels\NotLoggedInViewModel.cs" />
@@ -113,11 +118,17 @@
     <Compile Include="View\AdministratorMenuView.xaml.cs">
       <DependentUpon>AdministratorMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AdministratorUserView.xaml.cs">
+      <DependentUpon>AdministratorUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\InformatiiCameraView.xaml.cs">
       <DependentUpon>InformatiiCameraView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NotLoggedView.xaml.cs">
       <DependentUpon>NotLoggedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
@@ -151,11 +162,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AdministratorUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\InformatiiCameraView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NotLoggedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

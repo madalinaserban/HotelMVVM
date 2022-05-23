@@ -48,6 +48,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DELETED" Type="bit" />
         </EntityType>
         <Association Name="FK__CLIENTI__USER_ID__656C112C">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
@@ -76,6 +77,9 @@
         <Function Name="DELETEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
         </Function>
+        <Function Name="DELETEUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_USER" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetBalcon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Numar_Camera" Type="int" Mode="In" />
         </Function>
@@ -85,11 +89,28 @@
         <Function Name="GetServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetUserIdByMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ORDERBYPRICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SelectAllProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Numar_Camera" Type="int" Mode="In" />
         </Function>
         <Function Name="SelectServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UPDATEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+          <Parameter Name="BALCON" Type="bit" Mode="In" />
+          <Parameter Name="ETAJ" Type="int" Mode="In" />
+          <Parameter Name="NR_Dormitoare" Type="int" Mode="In" />
+          <Parameter Name="PRET" Type="float" Mode="In" />
+          <Parameter Name="BUCATARIE" Type="bit" Mode="In" />
+          <Parameter Name="FRIGIDER" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="UPDATESERVICII" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+          <Parameter Name="SERVICII" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="BookingdbModelStoreContainer">
           <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
@@ -137,6 +158,7 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CLIENTIs" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="User" ToRole="CLIENTI" />
+          <Property Name="DELETED" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="Bookingdb" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cameras" EntityType="Self.Camera" />
@@ -168,6 +190,26 @@
           </FunctionImport>
           <FunctionImport Name="SelectServicii" ReturnType="Collection(BookingdbModel.SelectServicii_Result)">
           <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ORDERBYPRICE" ReturnType="Collection(BookingdbModel.ORDERBYPRICE_Result)" />
+          <FunctionImport Name="UPDATEROOM">
+            <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+            <Parameter Name="BALCON" Mode="In" Type="Boolean" />
+            <Parameter Name="ETAJ" Mode="In" Type="Int32" />
+            <Parameter Name="NR_Dormitoare" Mode="In" Type="Int32" />
+            <Parameter Name="PRET" Mode="In" Type="Double" />
+            <Parameter Name="BUCATARIE" Mode="In" Type="Boolean" />
+            <Parameter Name="FRIGIDER" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATESERVICII">
+            <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+            <Parameter Name="SERVICII" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DELETEUSER">
+          <Parameter Name="ID_USER" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetUserIdByMail" ReturnType="Collection(Int32)">
+          <Parameter Name="Mail" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="CLIENTI">
@@ -218,6 +260,17 @@
           <Property Type="Int32" Name="CAMERA_ID" Nullable="true" />
           <Property Type="String" Name="ServiciiString" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="ORDERBYPRICE_Result">
+          <Property Type="Int32" Name="CAMERA_ID" Nullable="false" />
+          <Property Type="Int32" Name="ETAJ" Nullable="true" />
+          <Property Type="Int32" Name="NR_CAMERA" Nullable="true" />
+          <Property Type="Int32" Name="NR_DORMITOARE" Nullable="true" />
+          <Property Type="Double" Name="PRET" Nullable="true" />
+          <Property Type="Boolean" Name="BALCON" Nullable="true" />
+          <Property Type="Boolean" Name="BUCATARIE" Nullable="true" />
+          <Property Type="Boolean" Name="FRIGIDER" Nullable="true" />
+          <Property Type="Boolean" Name="DELETED" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -242,6 +295,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BookingdbModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
                 <ScalarProperty Name="User_ID" ColumnName="User_ID" />
                 <ScalarProperty Name="First_Name" ColumnName="First_Name" />
                 <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
@@ -286,6 +340,25 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ORDERBYPRICE" FunctionName="BookingdbModel.Store.ORDERBYPRICE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookingdbModel.ORDERBYPRICE_Result">
+                <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+                <ScalarProperty Name="ETAJ" ColumnName="ETAJ" />
+                <ScalarProperty Name="NR_CAMERA" ColumnName="NR_CAMERA" />
+                <ScalarProperty Name="NR_DORMITOARE" ColumnName="NR_DORMITOARE" />
+                <ScalarProperty Name="PRET" ColumnName="PRET" />
+                <ScalarProperty Name="BALCON" ColumnName="BALCON" />
+                <ScalarProperty Name="BUCATARIE" ColumnName="BUCATARIE" />
+                <ScalarProperty Name="FRIGIDER" ColumnName="FRIGIDER" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATEROOM" FunctionName="BookingdbModel.Store.UPDATEROOM" />
+          <FunctionImportMapping FunctionImportName="UPDATESERVICII" FunctionName="BookingdbModel.Store.UPDATESERVICII" />
+          <FunctionImportMapping FunctionImportName="DELETEUSER" FunctionName="BookingdbModel.Store.DELETEUSER" />
+          <FunctionImportMapping FunctionImportName="GetUserIdByMail" FunctionName="BookingdbModel.Store.GetUserIdByMail" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

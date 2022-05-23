@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace WpfApp1.View
 {
     /// <summary>
-    /// Interaction logic for AdministratorMenuView.xaml
+    /// Interaction logic for SearchView.xaml
     /// </summary>
-    public partial class AdministratorMenuView : Window
+    public partial class SearchView : Window
     {
-        public AdministratorMenuView()
+        public SearchView()
         {
             InitializeComponent();
         }
-
     }
 }

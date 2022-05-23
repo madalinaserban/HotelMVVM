@@ -8,6 +8,21 @@ namespace WpfApp1.Models.LogicModel
 {
     class UserModel
     {
+        public List<UserMenu> GetUsersMenu()
+        {
+            var productQuery = (from user in bookingdb.Users
+                                where user.Role.Contains("Customer") 
+                                where user.DELETED.Value!=true
+                                select new UserMenu()
+                                {
+                                    Nume = user.Last_Name,
+                                    Prenume=user.First_Name,
+                                    Email=user.Email
+
+                                }).ToList();
+
+            return productQuery;
+        }
         private Bookingdb bookingdb = new Bookingdb();
         public bool SignUp(string firstName, string lastName, string phoneNumber, string email, string address, string password)
         {
@@ -28,7 +43,8 @@ namespace WpfApp1.Models.LogicModel
                 Address = address,
                 Phone = phoneNumber,
                 Password = password,
-                Role = "Customer"
+                Role = "Customer",
+                DELETED=false
 
 
             });

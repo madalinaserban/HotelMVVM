@@ -99,6 +99,44 @@ namespace WpfApp1.ViewModels
             App.Current.MainWindow = nouTipDeCamera;
             nouTipDeCamera.Show();
         }
+        private ICommand searchCommand;
+        public ICommand SearchCommand
+        {
+            get
+            {
+                if (searchCommand == null)
+                {
+                    searchCommand = new RelayCommand(SearchMethod);
+                }
+                return searchCommand;
+            }
+        }
+        private void SearchMethod(object param)
+        {
+            SearchView searchView = new SearchView();
+            App.Current.MainWindow.Close();
+            App.Current.MainWindow = searchView;
+            searchView.Show();
+        }
+        private ICommand clientiCommand;
+        public ICommand ClientiCommand
+        {
+            get
+            {
+                if (clientiCommand == null)
+                {
+                    clientiCommand = new RelayCommand(ClientiMethod);
+                }
+                return clientiCommand;
+            }
+        }
+        private void ClientiMethod(object param)
+        {
+            AdministratorUserView startWindow = new AdministratorUserView();
+            App.Current.MainWindow.Close();
+            App.Current.MainWindow = startWindow;
+            startWindow.Show();
+        }
         private ICommand backCommand;
         public ICommand BackCommand
         {

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfApp1.View.AdministratorMenuView"
+﻿<Window x:Class="WpfApp1.View.AdministratorUserView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:ctx="clr-namespace:WpfApp1.ViewModels"
         mc:Ignorable="d" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <ctx:AdministratorMenuViewModel/>
+        <ctx:AdministratorUserMenuViewModel/>
     </Window.DataContext>
     <Window.Resources>
 
@@ -84,21 +84,21 @@
             <RowDefinition Height="280*"/>
             <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Camere" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Sitka Display"
+        <Label Grid.Row="0" Content="Clienti" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Sitka Display"
                FontSize="55" Height="64" Margin="358,14,338.333,20.667" Width="197"/>
 
-        <Label Grid.Row="1" Content="Numar Camera" FontSize="40" FontFamily="Sitka Display" Margin="1,0.333,563.333,0.333"
+        <Label Grid.Row="1" Content="Nume" FontSize="40" FontFamily="Sitka Display" Margin="1,0.333,246.333,0"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center" Grid.RowSpan="2"/>
-        <Label Grid.Row="1" Content="Numar Dormitoare" FontSize="40" FontFamily="Sitka Display" Margin="335,0.333,246.333,0"
+        <Label Grid.Row="1" Content="" FontSize="40" FontFamily="Sitka Display" Margin="335,0.333,246.333,0"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center" Grid.RowSpan="2">
         </Label>
-        <Label Grid.Row="1" Content="Pret/Noapte" FontSize="40" FontFamily="Sitka Display" Margin="647,0.333,0.333,0.333"
+        <Label Grid.Row="1" Content="Mail" FontSize="40" FontFamily="Sitka Display" Margin="647,0.333,0.333,0.333"
                HorizontalContentAlignment="Center"
                VerticalContentAlignment="Center" Grid.RowSpan="2">
         </Label>
-        <ListView Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding RoomsCollection}" SelectedItem="{Binding SelectedRoom}" Margin="0,43,0.333,0.333" Grid.RowSpan="2">
+        <ListView Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding UserCollection}" SelectedItem="{Binding SelectedUser}" Margin="0,43,0.333,0.333" Grid.RowSpan="2">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="1" VerticalAlignment="Stretch"/>
@@ -107,31 +107,26 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Width="900" Height="50" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-                        <Label Width="350" Height="50" Content="{Binding Nr_Camera}" FontFamily="Sitka Display" FontSize="12"
+                        <Label Width="100" Height="50" Content="{Binding Nume}" FontFamily="Sitka Display" FontSize="12"
              VerticalContentAlignment="Center"
              HorizontalContentAlignment="Left"/>
                         <Label Width="150" Height="50" FontFamily="Sitka Display" FontSize ="15" 
              VerticalContentAlignment="Center"
              HorizontalContentAlignment="Center"
-                               Content="{Binding Tip_Camera}" Margin="80,0,0,0"/>
-                        <Label Width="50" Height="50" FontFamily="Sitka Display" FontSize="15"
+                               Content="{Binding Prenume}" Margin="80,0,0,0"/>
+                        <Label Width="350" Height="50" FontFamily="Sitka Display" FontSize="15"
              VerticalContentAlignment="Center"
              HorizontalContentAlignment="Center"
-                               Content="{Binding Price}" Margin="150,0,0,0"/>
+                               Content="{Binding Email}" Margin="150,0,0,0"/>
 
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,321.667,0.333,-0.334" Grid.RowSpan="2">
-            <Button Content="Adauga/Modifica" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="220,5,0,5.333" Width="270" FontSize="20" Command="{Binding AddRoomsCommand}"/>
-            <Button Content="Vezi detalii camera" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="175" FontSize="20" Command="{Binding DetailiiCameraCommand}" />
-            <Button Content="Adauga oferte" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="169" FontSize="20"/>
+            <Button Content="Sterge" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="169" FontSize="20" Command="{Binding StergeUserCommand}" />
         </StackPanel>
-        <Button Grid.Row="4" Width="70" HorizontalAlignment="Left" Margin="20,1.667,0,15.666"
-                Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}">
-            <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display" Width="50" Height="28"/>
-        </Button>
-        <Button Content="Vezi useri" HorizontalAlignment="Left" Margin="70,22,0,0" VerticalAlignment="Top" Width="185" Command="{Binding ClientiCommand}" />
+        <Button Content="Vezi camere" HorizontalAlignment="Left" Margin="70,22,0,0" VerticalAlignment="Top" Width="185" Command="{Binding RoomsCommand}"/>
     </Grid>
 </Window>
+  

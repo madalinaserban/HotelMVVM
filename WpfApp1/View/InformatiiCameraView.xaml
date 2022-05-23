@@ -47,33 +47,33 @@
             <RowDefinition Height="325*"/>
             <RowDefinition Height="56*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Informatii camera" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Lucida Calligraphy"
+        <Label Grid.Row="0" Content="Informatii camera" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Sitka Display"
                FontSize="30" Height="150" Margin="58,35,53.333,55" Width="382" VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"/>
         <StackPanel Orientation="Vertical" Margin="0,225,0.333,0.667" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Numar de dormitoare:" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="265" Margin="20,0,0,0"/>
-                <Label Height="34" FontSize="18" Width="254" FontFamily="Lucida Calligraphy"
+                <Label Content="Numar de dormitoare:" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="265" Margin="20,0,0,0"/>
+                <Label Height="34" FontSize="18" Width="254" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="{Binding Numar_Dormitoare}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Pret:" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="100" Margin="0,0,0,0"/>
-                <Label Height="34" FontSize="20" Width="245" FontFamily="Lucida Calligraphy"
+                <Label Content="Pret:" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Right" VerticalAlignment="Top" Width="100" Margin="0,0,0,0"/>
+                <Label Height="34" FontSize="20" Width="245" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="{Binding Pret}" Margin="0,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="Etaj:" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="90" Margin="20,0,0,0"/>
-                <Label Height="34" FontSize="20" Width="252" FontFamily="Lucida Calligraphy"
+                <Label Content="Etaj:" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="90" Margin="20,0,0,0"/>
+                <Label Height="34" FontSize="20" Width="252" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="{Binding Etaj}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0.333,0">
-                <Label Content="Numar Camera:" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="205" Margin="20,0,0,0"/>
-                <Label Height="34" FontSize="20" Width="254" FontFamily="Lucida Calligraphy"
+                <Label Content="Numar Camera:" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="205" Margin="20,0,0,0"/>
+                <Label Height="34" FontSize="20" Width="254" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="{Binding Nr_Camera}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0.333,0">
-                <Label Content="Dotari:" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="150" Margin="20,0,0,0"/>
-                <Label Height="34" FontSize="20" Width="254" FontFamily="Lucida Calligraphy"
+                <Label Content="Dotari:" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="150" Margin="20,0,0,0"/>
+                <Label Height="34" FontSize="20" Width="254" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="Frigider">
                     <Label.Style>
                         <Style TargetType="Label">
@@ -89,7 +89,7 @@
                     </Label.Style>
                 </Label>
             </StackPanel>
-            <Label Height="34" FontSize="20" FontFamily="Lucida Calligraphy"
+            <Label Height="34" FontSize="20" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="Balcon" Margin="165,0,43.333,0">
                 <Label.Style>
                     <Style TargetType="Label">
@@ -104,7 +104,7 @@
                     </Style>
                 </Label.Style>
             </Label>
-            <Label Height="33" FontSize="20" FontFamily="Lucida Calligraphy"
+            <Label Height="33" FontSize="20" FontFamily="Sitka Display"
                    VerticalAlignment="Top" HorizontalContentAlignment="Left" Content="Bucatarie" Margin="165,0,133.333,0">
                 <Label.Style>
                     <Style TargetType="Label">
@@ -119,9 +119,10 @@
                     </Style>
                 </Label.Style>
             </Label>
-            <Label Content="Servicii" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="40,0,337.333,0"/>
+            <Label Content="Servicii" Height="36" FontSize="20" FontFamily="Sitka Display" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="40,0,337.333,0"/>
             <StackPanel Orientation="Horizontal" Margin="10,0,10.333,0">
-                <Label Content="{Binding ServiciiText}" Height="36" FontSize="20" FontFamily="Lucida Calligraphy" HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="40,0,348.333,0" Width="425"/>
+                <Label Content="{Binding ServiciiText}" Height="36" FontSize="20" FontFamily="
+                       " HorizontalContentAlignment="Center" VerticalAlignment="Top" Margin="40,0,348.333,0" Width="425"/>
             </StackPanel>
 
         </StackPanel>
@@ -129,7 +130,6 @@
                 Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}" Content="BACK">
         </Button>
         <Button Content="Sterge camera" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Left" Command="{Binding StergeCameraCommand}" Margin="360,10.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="110" Height="36"/>
-        <Button Content="Editeaza camera" Style="{StaticResource RoundedButtonStyle}" HorizontalAlignment="Left" Margin="175,10.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="125" Height="36"/>
     </Grid>
 </Window>
 

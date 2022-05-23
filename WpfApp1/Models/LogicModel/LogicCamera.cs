@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfApp1.View;
+using WpfApp1.ViewModels;
 
 namespace WpfApp1.Models.LogicModel
 {
@@ -56,6 +58,7 @@ namespace WpfApp1.Models.LogicModel
 
             return true;
         }
+     
 
         public bool AddServiciiSuplimentare(int id_camera, string servicii)
         {

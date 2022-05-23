@@ -43,6 +43,7 @@
     <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Role" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DELETED" Type="bit" />
   </EntityType>
   <Association Name="FK__CLIENTI__USER_ID__656C112C">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
@@ -71,6 +72,9 @@
   <Function Name="DELETEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
   </Function>
+  <Function Name="DELETEUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_USER" Type="int" Mode="In" />
+  </Function>
   <Function Name="GetBalcon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Numar_Camera" Type="int" Mode="In" />
   </Function>
@@ -80,11 +84,28 @@
   <Function Name="GetServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
   </Function>
+  <Function Name="GetUserIdByMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mail" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ORDERBYPRICE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SelectAllProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Numar_Camera" Type="int" Mode="In" />
   </Function>
   <Function Name="SelectServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UPDATEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+    <Parameter Name="BALCON" Type="bit" Mode="In" />
+    <Parameter Name="ETAJ" Type="int" Mode="In" />
+    <Parameter Name="NR_Dormitoare" Type="int" Mode="In" />
+    <Parameter Name="PRET" Type="float" Mode="In" />
+    <Parameter Name="BUCATARIE" Type="bit" Mode="In" />
+    <Parameter Name="FRIGIDER" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UPDATESERVICII" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+    <Parameter Name="SERVICII" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="BookingdbModelStoreContainer">
     <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />

@@ -1,10 +1,12 @@
-﻿C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\MainWindow.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\AdaugaNouTipDeCamera.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\AdministratorMenuView.xaml;;
+FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\AdministratorUserView.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\InformatiiCameraView.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\NotLoggedView.xaml;;
+FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\SearchView.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\SignInView.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\SignUpView.xaml;;
 FC:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\View\StartWindow.xaml;;

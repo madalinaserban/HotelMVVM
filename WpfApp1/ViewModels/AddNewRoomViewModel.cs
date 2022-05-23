@@ -140,7 +140,7 @@ namespace WpfApp1.ViewModels
             LogicCamera camera1 = new LogicCamera();
             if (!camera1.AddRoom(Nr_DormitoareProperty, Nr_CameraProperty, EtajProperty, PretProperty, BucatarieChecked, FrigiderChecked, BalconChecked))
             {
-                MessageBox.Show("Numarul camerei trebuie sa fie unic");
+                MessageBox.Show("Numarul camerei trebuie sa fie unic, poti modifica camera");
                 adaugat = false;
             }
             if (adaugat == true)
@@ -153,6 +153,58 @@ namespace WpfApp1.ViewModels
                 MessageBox.Show("Ai adaugat o camera!");
             }
         }
+        private ICommand updateRoomCommand;
+        public ICommand UpdateRoomCommand
+        {
+            get
+            {
+                if (updateRoomCommand == null)
+                {
+                    updateRoomCommand = new RelayCommand(UpdateRoomMethod);
+                }
+                return updateRoomCommand;
+            }
+        }
+        private void UpdateRoomMethod(object param)
+        {
+            bool gasit = false;
+            var query = (from camera in booking.Cameras select camera)?.ToList();
+            foreach (var roomList in query)
+            {
+                if (roomList.NR_CAMERA.Value.Equals(nr_Camera))
+                {
+                    gasit = true;
+                }
+            }
+            if (gasit == true)
+            {
+                int a = 0;
+                var id = booking.GETID_CAMERA(nr_Camera);
+                foreach (var cam in id)
+                {
+                    a = (int)cam;
+                }
+                booking.UPDATEROOM(a, balcon, etaj, nr_Dormitoare, pret, bucatarie, frigider);
+                var query1 = (from camera in booking.Cameras
+                             where camera.NR_CAMERA.Value.Equals(Nr_CameraProperty)
+                             select camera).First();
+                currentRoom = query1;
+                booking.UPDATESERVICII(currentRoom.CAMERA_ID, ServiciiSuplimentare);
+                MessageBox.Show("Ai modificat camera!");
+            }
+             else
+            {
+                MessageBox.Show("Nu exista nicio camera cu acest numar");
+
+            }
+
+
+
+                booking.SaveChanges();
+
+            
+        }
+
 
         private ICommand backCommand;
         public ICommand BackCommand

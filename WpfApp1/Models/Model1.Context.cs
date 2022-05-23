@@ -85,5 +85,74 @@ namespace WpfApp1.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SelectServicii_Result>("SelectServicii", iD_CAMERAParameter);
         }
+    
+        public virtual ObjectResult<ORDERBYPRICE_Result> ORDERBYPRICE()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ORDERBYPRICE_Result>("ORDERBYPRICE");
+        }
+    
+        public virtual int UPDATEROOM(Nullable<int> iD_CAMERA, Nullable<bool> bALCON, Nullable<int> eTAJ, Nullable<int> nR_Dormitoare, Nullable<double> pRET, Nullable<bool> bUCATARIE, Nullable<bool> fRIGIDER)
+        {
+            var iD_CAMERAParameter = iD_CAMERA.HasValue ?
+                new ObjectParameter("ID_CAMERA", iD_CAMERA) :
+                new ObjectParameter("ID_CAMERA", typeof(int));
+    
+            var bALCONParameter = bALCON.HasValue ?
+                new ObjectParameter("BALCON", bALCON) :
+                new ObjectParameter("BALCON", typeof(bool));
+    
+            var eTAJParameter = eTAJ.HasValue ?
+                new ObjectParameter("ETAJ", eTAJ) :
+                new ObjectParameter("ETAJ", typeof(int));
+    
+            var nR_DormitoareParameter = nR_Dormitoare.HasValue ?
+                new ObjectParameter("NR_Dormitoare", nR_Dormitoare) :
+                new ObjectParameter("NR_Dormitoare", typeof(int));
+    
+            var pRETParameter = pRET.HasValue ?
+                new ObjectParameter("PRET", pRET) :
+                new ObjectParameter("PRET", typeof(double));
+    
+            var bUCATARIEParameter = bUCATARIE.HasValue ?
+                new ObjectParameter("BUCATARIE", bUCATARIE) :
+                new ObjectParameter("BUCATARIE", typeof(bool));
+    
+            var fRIGIDERParameter = fRIGIDER.HasValue ?
+                new ObjectParameter("FRIGIDER", fRIGIDER) :
+                new ObjectParameter("FRIGIDER", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATEROOM", iD_CAMERAParameter, bALCONParameter, eTAJParameter, nR_DormitoareParameter, pRETParameter, bUCATARIEParameter, fRIGIDERParameter);
+        }
+    
+        public virtual int UPDATESERVICII(Nullable<int> iD_CAMERA, string sERVICII)
+        {
+            var iD_CAMERAParameter = iD_CAMERA.HasValue ?
+                new ObjectParameter("ID_CAMERA", iD_CAMERA) :
+                new ObjectParameter("ID_CAMERA", typeof(int));
+    
+            var sERVICIIParameter = sERVICII != null ?
+                new ObjectParameter("SERVICII", sERVICII) :
+                new ObjectParameter("SERVICII", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATESERVICII", iD_CAMERAParameter, sERVICIIParameter);
+        }
+    
+        public virtual int DELETEUSER(Nullable<int> iD_USER)
+        {
+            var iD_USERParameter = iD_USER.HasValue ?
+                new ObjectParameter("ID_USER", iD_USER) :
+                new ObjectParameter("ID_USER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEUSER", iD_USERParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetUserIdByMail(string mail)
+        {
+            var mailParameter = mail != null ?
+                new ObjectParameter("Mail", mail) :
+                new ObjectParameter("Mail", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetUserIdByMail", mailParameter);
+        }
     }
 }

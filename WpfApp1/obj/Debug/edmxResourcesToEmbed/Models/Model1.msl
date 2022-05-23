@@ -19,6 +19,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="BookingdbModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="DELETED" ColumnName="DELETED" />
           <ScalarProperty Name="User_ID" ColumnName="User_ID" />
           <ScalarProperty Name="First_Name" ColumnName="First_Name" />
           <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
@@ -63,5 +64,24 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ORDERBYPRICE" FunctionName="BookingdbModel.Store.ORDERBYPRICE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookingdbModel.ORDERBYPRICE_Result">
+          <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+          <ScalarProperty Name="ETAJ" ColumnName="ETAJ" />
+          <ScalarProperty Name="NR_CAMERA" ColumnName="NR_CAMERA" />
+          <ScalarProperty Name="NR_DORMITOARE" ColumnName="NR_DORMITOARE" />
+          <ScalarProperty Name="PRET" ColumnName="PRET" />
+          <ScalarProperty Name="BALCON" ColumnName="BALCON" />
+          <ScalarProperty Name="BUCATARIE" ColumnName="BUCATARIE" />
+          <ScalarProperty Name="FRIGIDER" ColumnName="FRIGIDER" />
+          <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UPDATEROOM" FunctionName="BookingdbModel.Store.UPDATEROOM" />
+    <FunctionImportMapping FunctionImportName="UPDATESERVICII" FunctionName="BookingdbModel.Store.UPDATESERVICII" />
+    <FunctionImportMapping FunctionImportName="DELETEUSER" FunctionName="BookingdbModel.Store.DELETEUSER" />
+    <FunctionImportMapping FunctionImportName="GetUserIdByMail" FunctionName="BookingdbModel.Store.GetUserIdByMail" />
   </EntityContainerMapping>
 </Mapping>
