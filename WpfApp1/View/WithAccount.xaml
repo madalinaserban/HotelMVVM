@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:WpfApp1.View"
         xmlns:ctx="clr-namespace:WpfApp1.ViewModels"
         mc:Ignorable="d" Height="650" Width="450" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <ctx:WithAccountViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="RoundedBorder" TargetType="Border">
             <Setter Property="CornerRadius" Value="5"/>

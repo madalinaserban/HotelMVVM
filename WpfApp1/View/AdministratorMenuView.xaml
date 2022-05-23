@@ -132,5 +132,6 @@
                 Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}">
             <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display" Width="50" Height="28"/>
         </Button>
+        <Button Content="Sorteaza dupa pret" HorizontalAlignment="Left" Margin="70,22,0,0" VerticalAlignment="Top" Width="185"/>
     </Grid>
 </Window>

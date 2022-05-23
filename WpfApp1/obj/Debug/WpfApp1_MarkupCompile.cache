@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Semestrul 2\WpfApp1\WpfApp1\obj\Debug\
+C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\
 WpfApp1
 none
 false
 DEBUG;TRACE
-C:\Semestrul 2\WpfApp1\WpfApp1\App.xaml
+C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\App.xaml
 9184112673
 21628168987
-332087204575
-181549349883
+352120225697
+18-1092526320
 MainWindow.xaml;View\AdaugaNouTipDeCamera.xaml;View\AdministratorMenuView.xaml;View\InformatiiCameraView.xaml;View\NotLoggedView.xaml;View\SignInView.xaml;View\SignUpView.xaml;View\StartWindow.xaml;View\WithAccount.xaml;
 
-False
+True
 

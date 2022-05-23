@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\SignInViewModels.cs" />
     <Compile Include="ViewModels\SignUpViewModel.cs" />
     <Compile Include="ViewModels\StartWindowViewModels.cs" />
+    <Compile Include="ViewModels\WithAccountViewModel.cs" />
     <Compile Include="View\AdaugaNouTipDeCamera.xaml.cs">
       <DependentUpon>AdaugaNouTipDeCamera.xaml</DependentUpon>
     </Compile>
