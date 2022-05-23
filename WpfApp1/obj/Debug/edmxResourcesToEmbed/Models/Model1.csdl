@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookingdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Camera">
+    <Key>
+      <PropertyRef Name="CAMERA_ID" />
+    </Key>
+    <Property Name="CAMERA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ETAJ" Type="Int32" />
+    <Property Name="NR_CAMERA" Type="Int32" />
+    <Property Name="NR_DORMITOARE" Type="Int32" />
+    <Property Name="PRET" Type="Double" />
+    <Property Name="BALCON" Type="Boolean" />
+    <Property Name="BUCATARIE" Type="Boolean" />
+    <Property Name="FRIGIDER" Type="Boolean" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="Serviciis" Relationship="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64" FromRole="Camera" ToRole="Servicii" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CLIENTIs" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="User" ToRole="CLIENTI" />
+  </EntityType>
+  <EntityContainer Name="Bookingdb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cameras" EntityType="Self.Camera" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="CLIENTIs" EntityType="BookingdbModel.CLIENTI" />
+    <EntitySet Name="Serviciis" EntityType="BookingdbModel.Servicii" />
+    <AssociationSet Name="FK__Servicii__CAMERA__5DCAEF64" Association="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64">
+      <End Role="Camera" EntitySet="Cameras" />
+      <End Role="Servicii" EntitySet="Serviciis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="BookingdbModel.FK__CLIENTI__USER_ID__656C112C">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CLIENTI" EntitySet="CLIENTIs" />
+    </AssociationSet>
+    <FunctionImport Name="DELETEROOM">
+      <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetBalcon" ReturnType="Collection(Boolean)">
+      <Parameter Name="Numar_Camera" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GETID_CAMERA" ReturnType="Collection(Int32)">
+      <Parameter Name="NR_CAMERA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="GetServicii" ReturnType="Collection(String)">
+      <Parameter Name="NR_CAMERA" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectAllProperties" ReturnType="Collection(Boolean)">
+      <Parameter Name="Numar_Camera" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectServicii" ReturnType="Collection(BookingdbModel.SelectServicii_Result)">
+      <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="CLIENTI">
+    <Key>
+      <PropertyRef Name="CLIENT_ID" />
+    </Key>
+    <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="Int32" />
+    <Property Name="ID_REZERVARI" Type="Int32" />
+    <Property Name="DELETED" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="CLIENTI" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Servicii">
+    <Key>
+      <PropertyRef Name="Serivicii_ID" />
+    </Key>
+    <Property Name="Serivicii_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CAMERA_ID" Type="Int32" />
+    <Property Name="ServiciiString" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Camera" Relationship="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64" FromRole="Servicii" ToRole="Camera" />
+  </EntityType>
+  <Association Name="FK__Servicii__CAMERA__5DCAEF64">
+    <End Type="BookingdbModel.Camera" Role="Camera" Multiplicity="0..1" />
+    <End Type="BookingdbModel.Servicii" Role="Servicii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Camera">
+        <PropertyRef Name="CAMERA_ID" />
+      </Principal>
+      <Dependent Role="Servicii">
+        <PropertyRef Name="CAMERA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CLIENTI__USER_ID__656C112C">
+    <End Type="BookingdbModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="BookingdbModel.CLIENTI" Role="CLIENTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CLIENTI">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SelectServicii_Result">
+    <Property Type="Int32" Name="Serivicii_ID" Nullable="false" />
+    <Property Type="Int32" Name="CAMERA_ID" Nullable="true" />
+    <Property Type="String" Name="ServiciiString" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

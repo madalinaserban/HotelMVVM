@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookingdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Camera">
+    <Key>
+      <PropertyRef Name="CAMERA_ID" />
+    </Key>
+    <Property Name="CAMERA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ETAJ" Type="int" />
+    <Property Name="NR_CAMERA" Type="int" />
+    <Property Name="NR_DORMITOARE" Type="int" />
+    <Property Name="PRET" Type="float" />
+    <Property Name="BALCON" Type="bit" />
+    <Property Name="BUCATARIE" Type="bit" />
+    <Property Name="FRIGIDER" Type="bit" />
+    <Property Name="DELETED" Type="bit" />
+  </EntityType>
+  <EntityType Name="CLIENTI">
+    <Key>
+      <PropertyRef Name="CLIENT_ID" />
+    </Key>
+    <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USER_ID" Type="int" />
+    <Property Name="ID_REZERVARI" Type="int" />
+    <Property Name="DELETED" Type="bit" />
+  </EntityType>
+  <EntityType Name="Servicii">
+    <Key>
+      <PropertyRef Name="Serivicii_ID" />
+    </Key>
+    <Property Name="Serivicii_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAMERA_ID" Type="int" />
+    <Property Name="ServiciiString" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CLIENTI__USER_ID__656C112C">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="CLIENTI" Type="Self.CLIENTI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="CLIENTI">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Servicii__CAMERA__5DCAEF64">
+    <End Role="Camera" Type="Self.Camera" Multiplicity="0..1" />
+    <End Role="Servicii" Type="Self.Servicii" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Camera">
+        <PropertyRef Name="CAMERA_ID" />
+      </Principal>
+      <Dependent Role="Servicii">
+        <PropertyRef Name="CAMERA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DELETEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetBalcon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Numar_Camera" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GETID_CAMERA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectAllProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Numar_Camera" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SelectServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="BookingdbModelStoreContainer">
+    <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTI" EntityType="Self.CLIENTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicii" EntityType="Self.Servicii" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="Self.FK__CLIENTI__USER_ID__656C112C">
+      <End Role="User" EntitySet="User" />
+      <End Role="CLIENTI" EntitySet="CLIENTI" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Servicii__CAMERA__5DCAEF64" Association="Self.FK__Servicii__CAMERA__5DCAEF64">
+      <End Role="Camera" EntitySet="Camera" />
+      <End Role="Servicii" EntitySet="Servicii" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BookingdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Camera">
+          <Key>
+            <PropertyRef Name="CAMERA_ID" />
+          </Key>
+          <Property Name="CAMERA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ETAJ" Type="int" />
+          <Property Name="NR_CAMERA" Type="int" />
+          <Property Name="NR_DORMITOARE" Type="int" />
+          <Property Name="PRET" Type="float" />
+          <Property Name="BALCON" Type="bit" />
+          <Property Name="BUCATARIE" Type="bit" />
+          <Property Name="FRIGIDER" Type="bit" />
+          <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="CLIENTI">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="ID_REZERVARI" Type="int" />
+          <Property Name="DELETED" Type="bit" />
+        </EntityType>
+        <EntityType Name="Servicii">
+          <Key>
+            <PropertyRef Name="Serivicii_ID" />
+          </Key>
+          <Property Name="Serivicii_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAMERA_ID" Type="int" />
+          <Property Name="ServiciiString" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CLIENTI__USER_ID__656C112C">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CLIENTI" Type="Self.CLIENTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="CLIENTI">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicii__CAMERA__5DCAEF64">
+          <End Role="Camera" Type="Self.Camera" Multiplicity="0..1" />
+          <End Role="Servicii" Type="Self.Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camera">
+              <PropertyRef Name="CAMERA_ID" />
+            </Principal>
+            <Dependent Role="Servicii">
+              <PropertyRef Name="CAMERA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DELETEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBalcon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Numar_Camera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GETID_CAMERA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NR_CAMERA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectAllProperties" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Numar_Camera" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectServicii" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_CAMERA" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="BookingdbModelStoreContainer">
+          <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTI" EntityType="Self.CLIENTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicii" EntityType="Self.Servicii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="Self.FK__CLIENTI__USER_ID__656C112C">
+            <End Role="User" EntitySet="User" />
+            <End Role="CLIENTI" EntitySet="CLIENTI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicii__CAMERA__5DCAEF64" Association="Self.FK__Servicii__CAMERA__5DCAEF64">
+            <End Role="Camera" EntitySet="Camera" />
+            <End Role="Servicii" EntitySet="Servicii" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookingdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Camera">
+          <Key>
+            <PropertyRef Name="CAMERA_ID" />
+          </Key>
+          <Property Name="CAMERA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ETAJ" Type="Int32" />
+          <Property Name="NR_CAMERA" Type="Int32" />
+          <Property Name="NR_DORMITOARE" Type="Int32" />
+          <Property Name="PRET" Type="Double" />
+          <Property Name="BALCON" Type="Boolean" />
+          <Property Name="BUCATARIE" Type="Boolean" />
+          <Property Name="FRIGIDER" Type="Boolean" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="Serviciis" Relationship="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64" FromRole="Camera" ToRole="Servicii" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CLIENTIs" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="User" ToRole="CLIENTI" />
+        </EntityType>
+        <EntityContainer Name="Bookingdb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cameras" EntityType="Self.Camera" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="CLIENTIs" EntityType="BookingdbModel.CLIENTI" />
+          <EntitySet Name="Serviciis" EntityType="BookingdbModel.Servicii" />
+          <AssociationSet Name="FK__Servicii__CAMERA__5DCAEF64" Association="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64">
+            <End Role="Camera" EntitySet="Cameras" />
+            <End Role="Servicii" EntitySet="Serviciis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="BookingdbModel.FK__CLIENTI__USER_ID__656C112C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CLIENTI" EntitySet="CLIENTIs" />
+          </AssociationSet>
+          <FunctionImport Name="DELETEROOM">
+          <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBalcon" ReturnType="Collection(Boolean)">
+          <Parameter Name="Numar_Camera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GETID_CAMERA" ReturnType="Collection(Int32)">
+          <Parameter Name="NR_CAMERA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetServicii" ReturnType="Collection(String)">
+          <Parameter Name="NR_CAMERA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectAllProperties" ReturnType="Collection(Boolean)">
+          <Parameter Name="Numar_Camera" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectServicii" ReturnType="Collection(BookingdbModel.SelectServicii_Result)">
+          <Parameter Name="ID_CAMERA" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CLIENTI">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="Int32" />
+          <Property Name="ID_REZERVARI" Type="Int32" />
+          <Property Name="DELETED" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="BookingdbModel.FK__CLIENTI__USER_ID__656C112C" FromRole="CLIENTI" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Servicii">
+          <Key>
+            <PropertyRef Name="Serivicii_ID" />
+          </Key>
+          <Property Name="Serivicii_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAMERA_ID" Type="Int32" />
+          <Property Name="ServiciiString" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Camera" Relationship="BookingdbModel.FK__Servicii__CAMERA__5DCAEF64" FromRole="Servicii" ToRole="Camera" />
+        </EntityType>
+        <Association Name="FK__Servicii__CAMERA__5DCAEF64">
+          <End Type="BookingdbModel.Camera" Role="Camera" Multiplicity="0..1" />
+          <End Type="BookingdbModel.Servicii" Role="Servicii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camera">
+              <PropertyRef Name="CAMERA_ID" />
+            </Principal>
+            <Dependent Role="Servicii">
+              <PropertyRef Name="CAMERA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CLIENTI__USER_ID__656C112C">
+          <End Type="BookingdbModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="BookingdbModel.CLIENTI" Role="CLIENTI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_ID" />
+            </Principal>
+            <Dependent Role="CLIENTI">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SelectServicii_Result">
+          <Property Type="Int32" Name="Serivicii_ID" Nullable="false" />
+          <Property Type="Int32" Name="CAMERA_ID" Nullable="true" />
+          <Property Type="String" Name="ServiciiString" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookingdbModelStoreContainer" CdmEntityContainer="Bookingdb">
+          <EntitySetMapping Name="Cameras">
+            <EntityTypeMapping TypeName="BookingdbModel.Camera">
+              <MappingFragment StoreEntitySet="Camera">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+                <ScalarProperty Name="ETAJ" ColumnName="ETAJ" />
+                <ScalarProperty Name="NR_CAMERA" ColumnName="NR_CAMERA" />
+                <ScalarProperty Name="NR_DORMITOARE" ColumnName="NR_DORMITOARE" />
+                <ScalarProperty Name="PRET" ColumnName="PRET" />
+                <ScalarProperty Name="BALCON" ColumnName="BALCON" />
+                <ScalarProperty Name="BUCATARIE" ColumnName="BUCATARIE" />
+                <ScalarProperty Name="FRIGIDER" ColumnName="FRIGIDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BookingdbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTIs">
+            <EntityTypeMapping TypeName="BookingdbModel.CLIENTI">
+              <MappingFragment StoreEntitySet="CLIENTI">
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="ID_REZERVARI" ColumnName="ID_REZERVARI" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serviciis">
+            <EntityTypeMapping TypeName="BookingdbModel.Servicii">
+              <MappingFragment StoreEntitySet="Servicii">
+                <ScalarProperty Name="ServiciiString" ColumnName="ServiciiString" />
+                <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+                <ScalarProperty Name="Serivicii_ID" ColumnName="Serivicii_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DELETEROOM" FunctionName="BookingdbModel.Store.DELETEROOM" />
+          <FunctionImportMapping FunctionImportName="GetBalcon" FunctionName="BookingdbModel.Store.GetBalcon" />
+          <FunctionImportMapping FunctionImportName="GETID_CAMERA" FunctionName="BookingdbModel.Store.GETID_CAMERA" />
+          <FunctionImportMapping FunctionImportName="GetServicii" FunctionName="BookingdbModel.Store.GetServicii" />
+          <FunctionImportMapping FunctionImportName="SelectAllProperties" FunctionName="BookingdbModel.Store.SelectAllProperties" />
+          <FunctionImportMapping FunctionImportName="SelectServicii" FunctionName="BookingdbModel.Store.SelectServicii">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BookingdbModel.SelectServicii_Result">
+                <ScalarProperty Name="Serivicii_ID" ColumnName="Serivicii_ID" />
+                <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+                <ScalarProperty Name="ServiciiString" ColumnName="ServiciiString" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

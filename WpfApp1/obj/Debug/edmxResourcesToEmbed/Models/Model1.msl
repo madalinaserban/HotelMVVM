@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BookingdbModelStoreContainer" CdmEntityContainer="Bookingdb">
+    <EntitySetMapping Name="Cameras">
+      <EntityTypeMapping TypeName="BookingdbModel.Camera">
+        <MappingFragment StoreEntitySet="Camera">
+          <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+          <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+          <ScalarProperty Name="ETAJ" ColumnName="ETAJ" />
+          <ScalarProperty Name="NR_CAMERA" ColumnName="NR_CAMERA" />
+          <ScalarProperty Name="NR_DORMITOARE" ColumnName="NR_DORMITOARE" />
+          <ScalarProperty Name="PRET" ColumnName="PRET" />
+          <ScalarProperty Name="BALCON" ColumnName="BALCON" />
+          <ScalarProperty Name="BUCATARIE" ColumnName="BUCATARIE" />
+          <ScalarProperty Name="FRIGIDER" ColumnName="FRIGIDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BookingdbModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTIs">
+      <EntityTypeMapping TypeName="BookingdbModel.CLIENTI">
+        <MappingFragment StoreEntitySet="CLIENTI">
+          <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+          <ScalarProperty Name="ID_REZERVARI" ColumnName="ID_REZERVARI" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Serviciis">
+      <EntityTypeMapping TypeName="BookingdbModel.Servicii">
+        <MappingFragment StoreEntitySet="Servicii">
+          <ScalarProperty Name="ServiciiString" ColumnName="ServiciiString" />
+          <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+          <ScalarProperty Name="Serivicii_ID" ColumnName="Serivicii_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETEROOM" FunctionName="BookingdbModel.Store.DELETEROOM" />
+    <FunctionImportMapping FunctionImportName="GetBalcon" FunctionName="BookingdbModel.Store.GetBalcon" />
+    <FunctionImportMapping FunctionImportName="GETID_CAMERA" FunctionName="BookingdbModel.Store.GETID_CAMERA" />
+    <FunctionImportMapping FunctionImportName="GetServicii" FunctionName="BookingdbModel.Store.GetServicii" />
+    <FunctionImportMapping FunctionImportName="SelectAllProperties" FunctionName="BookingdbModel.Store.SelectAllProperties" />
+    <FunctionImportMapping FunctionImportName="SelectServicii" FunctionName="BookingdbModel.Store.SelectServicii">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BookingdbModel.SelectServicii_Result">
+          <ScalarProperty Name="Serivicii_ID" ColumnName="Serivicii_ID" />
+          <ScalarProperty Name="CAMERA_ID" ColumnName="CAMERA_ID" />
+          <ScalarProperty Name="ServiciiString" ColumnName="ServiciiString" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

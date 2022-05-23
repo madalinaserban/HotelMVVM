@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookingdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+    </Key>
+    <Property Name="Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_ID" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Price" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Reservation_Product" Relationship="BookingdbModel.FK__Reservati__Reser__45F365D3" FromRole="Booking" ToRole="Reservation_Product" />
+  </EntityType>
+  <EntityType Name="Booking_Menu">
+    <Key>
+      <PropertyRef Name="Menu_Product_ID" />
+    </Key>
+    <Property Name="Menu_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="Number_of_days" Type="Int32" Nullable="false" />
+    <Property Name="Menu_Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="City_ID" />
+    </Key>
+    <Property Name="City_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Menu_ID" />
+    </Key>
+    <Property Name="Menu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_ID" />
+    </Key>
+    <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Single" Nullable="false" />
+    <Property Name="Days" Type="Int32" Nullable="false" />
+    <Property Name="Photo1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="City_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reservation_Menu">
+    <Key>
+      <PropertyRef Name="Reservation_Menu_ID" />
+    </Key>
+    <Property Name="Menu_ID" Type="Int32" Nullable="false" />
+    <Property Name="Reservation_ID" Type="Int32" Nullable="false" />
+    <Property Name="Reservation_Menu_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Reservation_Product">
+    <Key>
+      <PropertyRef Name="Reservation_Product_ID" />
+    </Key>
+    <Property Name="Reservation_ID" Type="Int32" Nullable="false" />
+    <Property Name="Product_ID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Reservation_Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Booking" Relationship="BookingdbModel.FK__Reservati__Reser__45F365D3" FromRole="Reservation_Product" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BookingdbEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Booking_Menu" EntityType="Self.Booking_Menu" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Reservation_Menu" EntityType="Self.Reservation_Menu" />
+    <EntitySet Name="Reservation_Product" EntityType="Self.Reservation_Product" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK__Reservati__Reser__45F365D3" Association="BookingdbModel.FK__Reservati__Reser__45F365D3">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Reservation_Product" EntitySet="Reservation_Product" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Reservati__Reser__45F365D3">
+    <End Type="BookingdbModel.Booking" Role="Booking" Multiplicity="1" />
+    <End Type="BookingdbModel.Reservation_Product" Role="Reservation_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_ID" />
+      </Principal>
+      <Dependent Role="Reservation_Product">
+        <PropertyRef Name="Reservation_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
