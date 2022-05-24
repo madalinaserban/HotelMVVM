@@ -31,6 +31,7 @@ namespace WpfApp1.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<CLIENTI> CLIENTIs { get; set; }
         public virtual DbSet<Servicii> Serviciis { get; set; }
+        public virtual DbSet<OFERTE> OFERTEs { get; set; }
     
         public virtual int DELETEROOM(Nullable<int> iD_CAMERA)
         {

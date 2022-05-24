@@ -28,6 +28,16 @@
           <Property Name="ID_REZERVARI" Type="int" />
           <Property Name="DELETED" Type="bit" />
         </EntityType>
+        <EntityType Name="OFERTE">
+          <Key>
+            <PropertyRef Name="OFERTE_ID" />
+          </Key>
+          <Property Name="OFERTE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REDUCERE" Type="int" />
+          <Property Name="NUME_OFERTA" Type="varchar" MaxLength="100" />
+          <Property Name="DATA_INCEPERE" Type="varchar" MaxLength="50" />
+          <Property Name="DATA_FINAL" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Servicii">
           <Key>
             <PropertyRef Name="Serivicii_ID" />
@@ -115,6 +125,7 @@
         <EntityContainer Name="BookingdbModelStoreContainer">
           <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTI" EntityType="Self.CLIENTI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OFERTE" EntityType="Self.OFERTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicii" EntityType="Self.Servicii" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="Self.FK__CLIENTI__USER_ID__656C112C">
@@ -211,6 +222,7 @@
           <FunctionImport Name="GetUserIdByMail" ReturnType="Collection(Int32)">
           <Parameter Name="Mail" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="OFERTEs" EntityType="BookingdbModel.OFERTE" />
         </EntityContainer>
         <EntityType Name="CLIENTI">
           <Key>
@@ -271,6 +283,16 @@
           <Property Type="Boolean" Name="FRIGIDER" Nullable="true" />
           <Property Type="Boolean" Name="DELETED" Nullable="true" />
         </ComplexType>
+        <EntityType Name="OFERTE">
+          <Key>
+            <PropertyRef Name="OFERTE_ID" />
+          </Key>
+          <Property Name="OFERTE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REDUCERE" Type="Int32" />
+          <Property Name="NUME_OFERTA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_INCEPERE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_FINAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -359,6 +381,17 @@
           <FunctionImportMapping FunctionImportName="UPDATESERVICII" FunctionName="BookingdbModel.Store.UPDATESERVICII" />
           <FunctionImportMapping FunctionImportName="DELETEUSER" FunctionName="BookingdbModel.Store.DELETEUSER" />
           <FunctionImportMapping FunctionImportName="GetUserIdByMail" FunctionName="BookingdbModel.Store.GetUserIdByMail" />
+          <EntitySetMapping Name="OFERTEs">
+            <EntityTypeMapping TypeName="BookingdbModel.OFERTE">
+              <MappingFragment StoreEntitySet="OFERTE">
+                <ScalarProperty Name="DATA_FINAL" ColumnName="DATA_FINAL" />
+                <ScalarProperty Name="DATA_INCEPERE" ColumnName="DATA_INCEPERE" />
+                <ScalarProperty Name="NUME_OFERTA" ColumnName="NUME_OFERTA" />
+                <ScalarProperty Name="REDUCERE" ColumnName="REDUCERE" />
+                <ScalarProperty Name="OFERTE_ID" ColumnName="OFERTE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

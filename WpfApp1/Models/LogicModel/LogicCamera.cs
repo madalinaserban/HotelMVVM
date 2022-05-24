@@ -73,21 +73,21 @@ namespace WpfApp1.Models.LogicModel
             return true;
         }
 
-        public void DeleteFeature(int id)
-        {
-            using (SqlConnection con = ((SqlConnection)bookingdb.Database.Connection))
-            {
-                SqlCommand cmd = new SqlCommand("DELETEROOM", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter idFeature = new SqlParameter("@id", id);
-                cmd.Parameters.Add(idFeature);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                bookingdb.SaveChanges();
-            }
+        //public void DeleteFeature(int id)
+        //{
+        //    using (SqlConnection con = ((SqlConnection)bookingdb.Database.Connection))
+        //    {
+        //        SqlCommand cmd = new SqlCommand("DELETEROOM", con);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        SqlParameter idFeature = new SqlParameter("@id", id);
+        //        cmd.Parameters.Add(idFeature);
+        //        con.Open();
+        //        cmd.ExecuteNonQuery();
+        //        bookingdb.SaveChanges();
+        //    }
 
 
-        }
+        //}
 
 
     }

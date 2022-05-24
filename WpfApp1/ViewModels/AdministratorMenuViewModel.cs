@@ -156,5 +156,25 @@ namespace WpfApp1.ViewModels
             App.Current.MainWindow = startWindow;
             startWindow.Show();
         }
+
+    private ICommand ofertaCommand;
+    public ICommand OfertaCommand
+    {
+        get
+        {
+            if (ofertaCommand == null)
+            {
+                ofertaCommand = new RelayCommand(OfertaMethod);
+            }
+            return ofertaCommand;
+        }
     }
+    private void OfertaMethod(object param)
+    {
+        AdaugaOfertaView startWindow = new AdaugaOfertaView();
+        App.Current.MainWindow.Close();
+        App.Current.MainWindow = startWindow;
+        startWindow.Show();
+    } 
+}
 }

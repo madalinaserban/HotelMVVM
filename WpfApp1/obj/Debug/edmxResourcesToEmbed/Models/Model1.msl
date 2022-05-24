@@ -83,5 +83,16 @@
     <FunctionImportMapping FunctionImportName="UPDATESERVICII" FunctionName="BookingdbModel.Store.UPDATESERVICII" />
     <FunctionImportMapping FunctionImportName="DELETEUSER" FunctionName="BookingdbModel.Store.DELETEUSER" />
     <FunctionImportMapping FunctionImportName="GetUserIdByMail" FunctionName="BookingdbModel.Store.GetUserIdByMail" />
+    <EntitySetMapping Name="OFERTEs">
+      <EntityTypeMapping TypeName="BookingdbModel.OFERTE">
+        <MappingFragment StoreEntitySet="OFERTE">
+          <ScalarProperty Name="DATA_FINAL" ColumnName="DATA_FINAL" />
+          <ScalarProperty Name="DATA_INCEPERE" ColumnName="DATA_INCEPERE" />
+          <ScalarProperty Name="NUME_OFERTA" ColumnName="NUME_OFERTA" />
+          <ScalarProperty Name="REDUCERE" ColumnName="REDUCERE" />
+          <ScalarProperty Name="OFERTE_ID" ColumnName="OFERTE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

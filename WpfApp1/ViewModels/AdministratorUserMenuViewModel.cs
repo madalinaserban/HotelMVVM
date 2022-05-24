@@ -73,7 +73,7 @@ namespace WpfApp1.ViewModels
         {
             get
             {
-                return selectedUser; ;
+                return selectedUser; 
             }
             set
             {

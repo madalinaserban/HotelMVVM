@@ -81,6 +81,7 @@
     <FunctionImport Name="GetUserIdByMail" ReturnType="Collection(Int32)">
       <Parameter Name="Mail" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="OFERTEs" EntityType="BookingdbModel.OFERTE" />
   </EntityContainer>
   <EntityType Name="CLIENTI">
     <Key>
@@ -141,4 +142,14 @@
     <Property Type="Boolean" Name="FRIGIDER" Nullable="true" />
     <Property Type="Boolean" Name="DELETED" Nullable="true" />
   </ComplexType>
+  <EntityType Name="OFERTE">
+    <Key>
+      <PropertyRef Name="OFERTE_ID" />
+    </Key>
+    <Property Name="OFERTE_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REDUCERE" Type="Int32" />
+    <Property Name="NUME_OFERTA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_INCEPERE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_FINAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

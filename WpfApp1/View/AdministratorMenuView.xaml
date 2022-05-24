@@ -126,7 +126,7 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,321.667,0.333,-0.334" Grid.RowSpan="2">
             <Button Content="Adauga/Modifica" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="220,5,0,5.333" Width="270" FontSize="20" Command="{Binding AddRoomsCommand}"/>
             <Button Content="Vezi detalii camera" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="175" FontSize="20" Command="{Binding DetailiiCameraCommand}" />
-            <Button Content="Adauga oferte" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="169" FontSize="20"/>
+            <Button Content="Adauga oferte" Style="{StaticResource RoundedButtonStyle}" FontFamily="Sitka Display" Margin="20,5,0,5.333" Width="169" FontSize="20" Command="{Binding OfertaCommand}"/>
         </StackPanel>
         <Button Grid.Row="4" Width="70" HorizontalAlignment="Left" Margin="20,1.667,0,15.666"
                 Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}">

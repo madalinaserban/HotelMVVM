@@ -23,6 +23,16 @@
     <Property Name="ID_REZERVARI" Type="int" />
     <Property Name="DELETED" Type="bit" />
   </EntityType>
+  <EntityType Name="OFERTE">
+    <Key>
+      <PropertyRef Name="OFERTE_ID" />
+    </Key>
+    <Property Name="OFERTE_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="REDUCERE" Type="int" />
+    <Property Name="NUME_OFERTA" Type="varchar" MaxLength="100" />
+    <Property Name="DATA_INCEPERE" Type="varchar" MaxLength="50" />
+    <Property Name="DATA_FINAL" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Servicii">
     <Key>
       <PropertyRef Name="Serivicii_ID" />
@@ -110,6 +120,7 @@
   <EntityContainer Name="BookingdbModelStoreContainer">
     <EntitySet Name="Camera" EntityType="Self.Camera" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CLIENTI" EntityType="Self.CLIENTI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OFERTE" EntityType="Self.OFERTE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicii" EntityType="Self.Servicii" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__CLIENTI__USER_ID__656C112C" Association="Self.FK__CLIENTI__USER_ID__656C112C">
