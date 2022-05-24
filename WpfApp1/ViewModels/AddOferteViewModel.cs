@@ -12,9 +12,7 @@ using WpfApp1.View;
 
 namespace WpfApp1.ViewModels
 {
-    class AddOferteViewModel
-    {
-        class AddNewRoomViewModel : BaseViewModel
+    class AddOferteViewModel: BaseViewModel
         {
             Bookingdb booking = new Bookingdb();
             public static OFERTE oferta_curenta = new OFERTE();
@@ -71,38 +69,32 @@ namespace WpfApp1.ViewModels
                 }
             }
 
-
-            //private ICommand addRoomCommand;
-            //public ICommand AddRoomCommand
-            //{
-            //    get
-            //    {
-            //        if (addRoomCommand == null)
-            //        {
-            //            addRoomCommand = new RelayCommand(AddRoomMethod);
-            //        }
-            //        return addRoomCommand;
-            //    }
-            //}
-            //private void AddRoomMethod(object param)
-            //{
-            //    bool adaugat = true;
-            //    LogicCamera camera1 = new LogicCamera();
-            //    if (!camera1.AddRoom(Nr_DormitoareProperty, Nr_CameraProperty, EtajProperty, PretProperty, BucatarieChecked, FrigiderChecked, BalconChecked))
-            //    {
-            //        MessageBox.Show("Numarul camerei trebuie sa fie unic, poti modifica camera");
-            //        adaugat = false;
-            //    }
-            //    if (adaugat == true)
-            //    {
-            //        var query = (from camera in booking.Cameras
-            //                     where camera.NR_CAMERA.Value.Equals(Nr_CameraProperty)
-            //                     select camera).First();
-            //        currentRoom = query;
-            //        camera1.AddServiciiSuplimentare(currentRoom.CAMERA_ID, ServiciiSuplimentare);
-            //        MessageBox.Show("Ai adaugat o camera!");
-            //    }
-            //}
+            private ICommand addOfertaCommand;
+            public ICommand AddOfertaCommand
+            {
+                get
+                {
+                    if (addOfertaCommand == null)
+                    {
+                        addOfertaCommand = new RelayCommand(AddOfertaMethod);
+                    }
+                    return addOfertaCommand;
+                }
+            }
+            private void AddOfertaMethod(object param)
+            {
+                {
+                    booking.OFERTEs.Add(new OFERTE()
+                    {
+                        DATA_INCEPERE = data1,
+                        DATA_FINAL=data2,
+                        REDUCERE=reducere,
+                        NUME_OFERTA=nume
+                    }) ;
+                    booking.SaveChanges();
+                    MessageBox.Show("Ai adaugat o oferta!");
+                }
+            }
 
             private ICommand backCommand;
             public ICommand BackCommand
@@ -126,4 +118,4 @@ namespace WpfApp1.ViewModels
 
         }
     }
-}
+

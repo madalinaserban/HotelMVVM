@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,6 +68,22 @@ namespace WpfApp1.Models.LogicModel
                 return false;
             }
             return true;
+        }
+
+        public void DeleteUser(int id)
+        {
+            using (SqlConnection con = ((SqlConnection)bookingdb.Database.Connection))
+            {
+                SqlCommand cmd = new SqlCommand("DELETEUSER", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter idFeature = new SqlParameter("@id", id);
+                cmd.Parameters.Add(idFeature);
+                con.Open();
+                cmd.ExecuteNonQuery();
+                bookingdb.SaveChanges();
+            }
+
+
         }
     }
 }

@@ -75,7 +75,6 @@ C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
-C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\View\AdministratorUserView.g.cs
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\View\AdministratorUserView.baml
 C:\Semestrul 2\WpfApp1\HotelMVVM\WpfApp1\obj\Debug\View\AdaugaOfertaView.g.cs

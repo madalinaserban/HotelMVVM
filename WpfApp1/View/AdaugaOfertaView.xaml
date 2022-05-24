@@ -161,7 +161,7 @@
             <TextBlock Text="Back" FontSize="25" FontFamily="Sitka Display"/>
         </Button>
         <Button Grid.Column="3" Grid.Row="9" Width="90" HorizontalAlignment="Right" Margin="0,34.312,182,0.022"
-                Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding BackCommand}">
+                Style="{StaticResource RoundedButtonStyle}" FontSize="20" Command="{Binding AddOfertaCommand}">
             <TextBlock Text="Adauga" FontSize="25" FontFamily="Sitka Display"/>
         </Button>
 
